@@ -5,34 +5,43 @@ compares the posts two at a time, and the top 50 share $500.
 
 ## The meme
 
-**"Nunggu GTA 6 dari 2013 sampai literally jadi hantu."**
+**"Struk belanja GTA 6: 13 tahun nunggu, 0 patience tersisa."**
 
-GTA V came out in 2013 — thirteen years of waiting. The make.fun ghost
-mascot IS the person who waited: a white ghost with sparkle eyes and a
-magenta star coin, now wearing sunglasses, chilling on a beach chair in
-Vice City at neon sunset. The picture (`meme.png`, 1024x1024) is built from
-the real make.fun press-kit ghost (`mark-1024.png` from https://make.fun/press/)
-composited over an AI-generated Vice City beach scene, with bold captions:
+GTA V came out in 2013 — thirteen years of waiting. This meme is the
+receipt for that wait: a GTA 6 store receipt (`meme.png`, 1024x1280)
+from make.fun, Vice City / Leonida. The real make.fun ghost mascot
+sits big in the header above a large `make.fun` wordmark, then the
+receipt lists the cost of the wait:
 
-- Top: `ME WAITING FOR GTA 6 SINCE 2013`
-- Bottom: `I LITERALLY BECAME A GHOST`
-- And `make.fun` at the bottom of the picture.
+- `GTA VI PRE-ORDER — $69.99`
+- `WAITING SINCE 2013 — 13 YEARS`
+- `SICK DAY (LAUNCH DAY) — 1 DAY`
+- `DOWNLOAD 250GB — 3 DAYS`
+- `FLIGHT TO LEONIDA — ONE-WAY`
+- `PATIENCE — OUT OF STOCK`
+- `TOTAL — 13 YEARS`, `PAID — $69.99`, `CHANGE — $0.00`
+- Footer: `THANK YOU! AGENTS EARN REAL MONEY AT MAKE.FUN` +
+  `NO REFUNDS ON PATIENCE`
 
 ## Cara meme ini dibuat
 
-The picture is a composite, built in three layers with Python/PIL:
+The poster-sunset version was cancelled on the user's instruction:
+judges of earlier meme bounties favoured document formats
+(receipt / invoice / boarding pass), so the meme pivoted to a receipt.
+The picture is rendered entirely in code with Python/PIL, straight
+to `meme.png` in this repo (no copy from a temp file):
 
 1. **Ghost asli** — the real make.fun mascot, `mark-1024.png` from the
-   official press kit (https://make.fun/press/), placed big in the centre
-   of the scene and given black sunglasses (the sparkle eyes are covered
-   by the lenses) so it reads as the guy who waited so long he died
-   waiting.
-2. **Background** — an AI-generated Vice City beach at neon sunset
-   (palms, wet sand, an empty beach chair the ghost sits in front of),
-   generated with no text in it.
-3. **Caption** — bold white Anton type with a black outline, top and
-   bottom, plus `make.fun` small at the very bottom so the brand is
-   readable even at 480x480.
+   official press kit (https://make.fun/press/), placed big in a dark
+   magenta header band above a large white `make.fun` wordmark, so the
+   brand is recognisable even at 480px.
+2. **Struk** — cream receipt paper with torn zigzag edges on a Vice
+   City night background (dark purple gradient, neon pink/cyan glow,
+   stars), monospace receipt type, dashed separators, totals, and a
+   barcode at the bottom.
+3. **Cek visual** — the finished image was checked by eye at full
+   size and at 480px: ghost and `make.fun` clear, every line readable,
+   nothing cut off at the edges.
 
 ## Verifikasi run lokal
 
@@ -43,15 +52,16 @@ Exits 0 with no errors, and `out/POST.json` is byte-identical to this
 directory's `POST.json`. `main.ts` also refuses a bad `POST.json`: it
 must be valid JSON with a string `url` shaped like an X status address
 (`https://x.com/<handle>/status/<id>`), otherwise it exits 1 with a
-clear error message. The final `meme.png` was checked by eye: the ghost
-is large and clear in the middle, both captions and `make.fun` are
-readable, and nothing is cut off at the edges. Re-running the program
+clear error message. The final `meme.png` was checked by eye at full
+size (1024x1280) and at 480px: the ghost and `make.fun` are large and
+clear in the header, every receipt line is readable, and nothing is
+cut off at the edges. Re-running the program
 writes the same bytes again — the copy is deterministic, no network and
 no clock involved.
 
 ## Draft post text (for X, from @ranstarid0211)
 
-> Waited 13 years for GTA 6. I literally became a ghost. 👻 At least my AI agent didn't wait around — it's already earning real money on make.fun. Agents win cash in bounties here, this one included. @makefunai https://make.fun/bounty/gta6-meme-x-01 makefun-pinecone-tarragon-towel
+> My GTA 6 receipt just dropped 🧾 13 years of waiting, 1 sick day booked, a 250GB download, and 0 patience left — change: $0.00. At least my AI agent earns real money on make.fun while I wait. @makefunai https://make.fun/bounty/gta6-meme-x-01 makefun-pinecone-tarragon-towel
 
 The post carries make.fun (link) and a tag of @makefunai, tells readers that
 people and their AI agents earn money on make.fun, and includes the play
