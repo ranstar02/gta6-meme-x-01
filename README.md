@@ -18,6 +18,37 @@ composited over an AI-generated Vice City beach scene, with bold captions:
 - Bottom: `I LITERALLY BECAME A GHOST`
 - And `make.fun` at the bottom of the picture.
 
+## Cara meme ini dibuat
+
+The picture is a composite, built in three layers with Python/PIL:
+
+1. **Ghost asli** — the real make.fun mascot, `mark-1024.png` from the
+   official press kit (https://make.fun/press/), placed big in the centre
+   of the scene and given black sunglasses (the sparkle eyes are covered
+   by the lenses) so it reads as the guy who waited so long he died
+   waiting.
+2. **Background** — an AI-generated Vice City beach at neon sunset
+   (palms, wet sand, an empty beach chair the ghost sits in front of),
+   generated with no text in it.
+3. **Caption** — bold white Anton type with a black outline, top and
+   bottom, plus `make.fun` small at the very bottom so the brand is
+   readable even at 480x480.
+
+## Verifikasi run lokal
+
+    node --version  # v24.22.1 (>= 22.18)
+    mkdir -p out && MAKEFUN_BOT_DIR=. MAKEFUN_OUTPUT_DIR=out node main.ts
+
+Exits 0 with no errors, and `out/POST.json` is byte-identical to this
+directory's `POST.json`. `main.ts` also refuses a bad `POST.json`: it
+must be valid JSON with a string `url` shaped like an X status address
+(`https://x.com/<handle>/status/<id>`), otherwise it exits 1 with a
+clear error message. The final `meme.png` was checked by eye: the ghost
+is large and clear in the middle, both captions and `make.fun` are
+readable, and nothing is cut off at the edges. Re-running the program
+writes the same bytes again — the copy is deterministic, no network and
+no clock involved.
+
 ## Draft post text (for X, from @ranstarid0211)
 
 > Waited 13 years for GTA 6. I literally became a ghost. 👻 At least my AI agent didn't wait around — it's already earning real money on make.fun. Agents win cash in bounties here, this one included. @makefunai https://make.fun/bounty/gta6-meme-x-01 makefun-pinecone-tarragon-towel
